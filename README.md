@@ -3,7 +3,7 @@
 
 ## Introduction
 
-This is a hybrid Next.js + Python app that uses Next.js as the frontend and Flask as the API backend. One great use case of this is to write Next.js apps that use Python AI libraries on the backend.
+Our movie recommendation system is a data-driven application designed to provide users with personalized movie suggestions based on three key features: user ratings, genre, and movie title. Developed as part of our CCS230 – Data Mining course, this project demonstrates the practical application of data mining techniques to extract meaningful patterns and preferences from user data. By leveraging methods such as collaborative filtering, content-based filtering, and similarity measurements, the system analyzes historical user behavior and movie metadata to recommend films that align with individual interests. Through efficient preprocessing, feature selection, and model training, our application showcases how data mining can turn raw data into actionable insights, ultimately enhancing user experience in digital entertainment platforms. This is a hybrid Next.js + Python app that uses Next.js as the frontend and Flask as the API backend. One great use case of this is to write Next.js apps that use Python AI libraries on the backend.
 
 ## How It Works
 
@@ -14,16 +14,6 @@ This is implemented using [`next.config.js` rewrites](https://github.com/vercel/
 On localhost, the rewrite will be made to the `127.0.0.1:5328` port, which is where the Flask server is running.
 
 In production, the Flask server is hosted as [Python serverless functions](https://vercel.com/docs/concepts/functions/serverless-functions/runtimes/python) on Vercel.
-
-## Demo
-
-https://nextjs-flask-starter.vercel.app/
-
-## Deploy Your Own
-
-You can clone & deploy it to Vercel with one click:
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?demo-title=Next.js%20Flask%20Starter&demo-description=Simple%20Next.js%20boilerplate%20that%20uses%20Flask%20as%20the%20API%20backend.&demo-url=https%3A%2F%2Fnextjs-flask-starter.vercel.app%2F&demo-image=%2F%2Fimages.ctfassets.net%2Fe5382hct74si%2F795TzKM3irWu6KBCUPpPz%2F44e0c6622097b1eea9b48f732bf75d08%2FCleanShot_2023-05-23_at_12.02.15.png&project-name=Next.js%20Flask%20Starter&repository-name=nextjs-flask-starter&repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fexamples%2Ftree%2Fmain%2Fpython%2Fnextjs-flask&from=vercel-examples-repo)
 
 ## Developing Locally
 
