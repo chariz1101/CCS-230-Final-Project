@@ -1,30 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rekom</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="../static/css/styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rekom</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/static/styles.css" />
 </head>
-<body>
-  <h1>🎬 Movie Recommendation System</h1>
+<script>
+  function getRecommendations() {
+    const genre = document.getElementById('genre').value;
+    const genres = genre ? [genre] : [];
+    const user_id = document.getElementById('user_id').value;
+    const title = document.getElementById('title').value;
 
-  <label for="genres">Select Genres:</label>
-  <select id="genres" multiple>
-    <!-- Options will be added dynamically -->
-  </select>
+    fetch('/recommend', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ genres, user_id, title })
+    })
+      .then(response => response.json())
+      .then(data => {
+        const resultsDiv = document.getElementById('results');
+        resultsDiv.innerHTML = '';
 
-  <label for="user_id">User ID (optional):</label>
-  <input type="text" id="user_id" placeholder="1 to 6040">
+        if (data.length === 0) {
+          resultsDiv.innerHTML = '<p class="text-gray-400">No recommendations found.</p>';
+          return;
+        }
 
-  <label for="title">Movie Title (optional):</label>
-  <input type="text" id="title">
+        data.forEach((movie, index) => {
+          const divider = `
+          <h2 class="text-xl font-semibold mb-1 border-b border-gray-300 pb-1 text-white">
+            Recommended Movie #${index + 1}
+          </h2>
+        `;
 
-  <button onclick="getRecommendations()">Get Recommendations</button>
+          const movieCard = `
+          <div class="bg-transparent text-white rounded-md p-4 mb-4 shadow">
+            <h3 class="font-bold text-lg mb-1">${movie.Title}</h3>
+            <img src="${movie.poster}" alt="${movie.Title}" class="w-32 mb-2 rounded block mx-auto">
+            <p><strong>Genres:</strong> ${movie.Genres}</p>
+            <p><strong>Year:</strong> ${movie.Year}</p>
+            <p><strong>Rating:</strong> ${movie.Rating}</p>
+          </div>
+        `;
 
-  <div id="results"></div>
+          resultsDiv.innerHTML += divider + movieCard;
+        });
+
+
+      })
+      .catch(error => {
+        console.error('Error fetching recommendations:', error);
+        document.getElementById('results').innerHTML = '<p class="text-red-500">An error occurred.</p>';
+      });
+  }
+</script>
+
+<body class="bg-black text-white font-sans">
+
+  <!-- Nav -->
+  <nav
+    class="absolute top-0 left-0 w-full z-50 bg-black/30 backdrop-blur-2 text-center p-6 flex items-center justify-between px-[8%]">
+    <div>
+      <h1 class="font-title text-3xl">REKOM</h1>
+    </div>
+    <div class="flex justify-center flex-1 gap-10 font-weight">
+      <a href="/" class="text-md hover:text-[#FD5017]" style="text-shadow: 4px 4px 6px rgba(0,0,0,0.7);">Home</a>
+      <a href="/rekom" class="text-md hover:text-[#FD5017]" style="text-shadow: 4px 4px 6px rgba(0,0,0,0.7);">Reko</a>
+      <a href="/about" class="text-md hover:text-[#FD5017]" style="text-shadow: 4px 4px 6px rgba(0,0,0,0.7);">About
+        us</a>
+    </div>
+
+    <div>
+      <a href="/contact" class="flex">
+        <img src="../static/images/headset.svg" alt="headset" class="w-6 h-6 invert hover:text-[#FD5017]" />
+      </a>
+    </div>
+  </nav>
+
+  <!-- Main Section -->
+  <section class="font-title flex items-center justify-center min-h-screen w-full bg-cover bg-center relative"
+    style="background-image: url('/static/images/daredevil.jpg');">
+
+    <div
+      class="bg-[#3C3B3B] bg-opacity-80 rounded-xl p-10 w-[90%] md:w-[80%] lg:w-[70%] flex flex-col md:flex-row gap-10">
+
+      <!-- Left Panel -->
+      <div class=" w-full md:w-1/2">
+        <h2 class="text-2xl md:text-3xl font-bold mb-6 text-center">
+          FIND THE <span class="text-[#E341FF]">MOVIE</span> THAT YOU <span class="text-[#E341FF]">LIKE</span>
+        </h2>
+
+        <div class="mb-4">
+          <label class="block text-sm mb-1" for="genre">GENRE</label>
+          <select id="genre" class="w-full p-2 rounded-md bg-gray-200 text-black">
+            <option value="Action">Action</option>
+            <option value="Adventure">Adventure</option>
+            <option value="Animation">Animation</option>
+            <option value="Children's">Children's</option>
+            <option value="Comedy">Comedy</option>
+            <option value="Crime">Crime</option>
+            <option value="Documentary">Documentary</option>
+            <option value="Drama">Drama</option>
+            <option value="Fantasy">Fantasy</option>
+            <option value="Film-Noir">Film-Noir</option>
+            <option value="Horror">Horror</option>
+            <option value="Musical">Musical</option>
+            <option value="Mystery">Mystery</option>
+            <option value="Romance">Romance</option>
+            <option value="Sci-Fi">Sci-Fi</option>
+            <option value="Thriller">Thriller</option>
+            <option value="War">War</option>
+            <option value="Western">Western</option>
+          </select>
+
+        </div>
+
+
+        <div class="mb-4">
+          <label class="block text-sm mb-1" for="user_id">USER ID (Optional)</label>
+          <input type="text" id="user_id" class="w-full p-2 rounded-md bg-gray-200 text-black" />
+        </div>
+
+        <div class="mb-6">
+          <label class="block text-sm mb-1" for="title">MOVIE TITLE (Optional)</label>
+          <input type="text" id="title" class="w-full p-2 rounded-md bg-gray-200 text-black" />
+        </div>
+
+        <button onclick="getRecommendations()"
+          class="w-full bg-[#E341FF] hover:bg-[#c530e4] text-white font-bold py-3 rounded-md text-2xl pb-2">
+          REKOM
+        </button>
+      </div>
+
+      <!-- Divider -->
+      <div class="hidden md:block w-px bg-[#E341FF]"></div>
+
+      <!-- Right Panel -->
+      <div class="w-full md:w-1/2 flex flex-col text-center bg-transparent flex-1">
+        <!-- Fixed Title -->
+        <div class="sticky top-0 bg-transparent z-10">
+          <h2 class="text-2xl md:text-3xl font-bold mb-4">
+            OUR MOVIE <span class="text-[#E341FF]">RECOMMENDATIONS</span>
+          </h2>
+        </div>
+
+        <!-- Scrollable Results -->
+        <div id="results" class="mt-8 overflow-y-auto h-full max-h-[30vh] space-y-4 pr-2 custom-scrollbar">
+          <!-- Cards will be appended here by JavaScript -->
+        </div>
+      </div>
+
+    </div>
+  </section>
 
   <script src="/static/app.js"></script>
+  {% include 'footer.html' %}
 </body>
+
 </html>
