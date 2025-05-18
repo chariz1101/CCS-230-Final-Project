@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rekom</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="../static/styles.css" />
+</head>
+<body class="bg-primary text-white">
+     <!-- Nav -->
+    <nav class="text-center p-6 flex items-center justify-between z-3 px-[8%]">
+        <div>
+            <h1 class="font-title text-[2rem]">Rekom</h1>
+        </div>
+        <div class="flex justify-center flex-1 gap-10 font-body c1">
+            <a href="/" class="text-[#FD5017] transition hover:text-[#4EC3B9]">Home</a>
+            <a href="/rekom" class="transition hover:text-[#4EC3B9]">Rekom</a>
+            <a href="/about" class="transition hover:text-[#4EC3B9]">About Us</a>
+        </div>
+        <div>
+            <a href="/contact" class="transition flex"> <img src="../static/images/headset.svg" alt="headset" 
+                class="w-8 h-8 invert transition hover:text-[#4EC3B9]" />
+            </a>
+        </div>
+    </nav>
+   <div id="overlay">
+    <div id="carousel">
+      <div class="card" data-index="0">Devil May Cry</div>
+      <div class="card" data-index="1">Daredevil</div>
+    </div>
+
+    <div id="movie-details">
+      <h1 id="movie-title"></h1>
+      <p id="movie-description"></p>
+      <ul>
+        <li id="movie-genre"></li>
+        <li id="movie-episodes"></li>
+        <li id="movie-studio"></li>
+        <li id="movie-director"></li>
+        <li id="movie-voices"></li>
+      </ul>
+    </div>
+  </div>
+
+<script src="carousel.js"></script>
+</body>
+
+<footer class="w-full h-[484px] bg-[#F3F4E6] shadow-[0_10px_20px_0_rgba(0,0,0,0.2)] mt-[15rem] relative">
+  <!-- Logo -->
+  <img src="../static/public/sentisize_logo 2 BLUE FOR FOOTER.png" alt="Logo" class="absolute ml-[16rem] mt-[5rem] w-[125px]">
+  
+  <!-- Text and Copyright Section -->
+  <div class="absolute ml-[25rem] top-[30%] transform -translate-x-1/2 text-[#284D6F] font-body">
+      <p class="text-lg mt-[4rem]">West Visayas State University, Lapaz</p>
+      <p class="text-lg mt-[6rem]">Privacy Policy</p>
+      <p class="text-lg mt-5">Copyright 2025</p>
+  </div>
+
+  <!-- Vertical Line on the Right Side -->
+  <div class="absolute right-0 top-0 h-[260px] w-[4px] bg-gradient-to-b from-[#F9CD3E] to-[#5D921D]"></div>
+
+  <!-- Container to center image and links -->
+  <div class="absolute right-0 left-0 top-[90px] flex ml-[50rem] gap-8">
+      <!-- Image (line2.png) -->
+      <img src="../static/public/Line 2.png" alt="Line Image" class="w-[3px]">
+      
+      <!-- Vertical Links Section -->
+      <div class="flex flex-col gap-4 text-[#284D6F] font-body text-lg">
+          <a href="#" class="hover:text-[#4EC3B9]">Home</a>
+          <a href="/" class="hover:text-[#4EC3B9]">Sentiment</a>
+          <a href="" class="hover:text-[#4EC3B9]">About Us</a>
+          <a href="/contact" class="hover:text-[#4EC3B9]">Contact Us</a>
+      </div>
+  </div>
+</footer>

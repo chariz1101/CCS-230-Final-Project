@@ -1,0 +1,28 @@
+
+@font-face {
+  font-family: "MuckleyBlack";
+  src: url(../static/fonts/Muckley-Black.ttf);
+}
+
+.font-title {
+  font-family: "MuckleyBlack", sans-serif;
+}
+
+.bg-primary {
+  background-color: #1D1D1D;
+  color: whitesmoke;
+}
+
+.c1 {
+  color: aliceblue;
+}
+
+.c2 {
+  color: #DF46FF;
+}
+
+html {
+  font-size: 1rem;
+  font-family: 'Poppins',sans-serif;
+  font-weight: 300;
+}
