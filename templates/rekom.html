@@ -32,9 +32,15 @@
           return;
         }
 
-        data.forEach(movie => {
+        data.forEach((movie, index) => {
+          const divider = `
+          <h2 class="text-xl font-semibold mb-1 border-b border-gray-300 pb-1 text-white">
+            Recommended Movie #${index + 1}
+          </h2>
+        `;
+
           const movieCard = `
-          <div class="bg-white text-black rounded-md p-4 mb-4 shadow">
+          <div class="bg-transparent text-white rounded-md p-4 mb-4 shadow">
             <h3 class="font-bold text-lg mb-1">${movie.Title}</h3>
             <img src="${movie.poster}" alt="${movie.Title}" class="w-32 mb-2 rounded block mx-auto">
             <p><strong>Genres:</strong> ${movie.Genres}</p>
@@ -42,8 +48,11 @@
             <p><strong>Rating:</strong> ${movie.Rating}</p>
           </div>
         `;
-          resultsDiv.innerHTML += movieCard;
+
+          resultsDiv.innerHTML += divider + movieCard;
         });
+
+
       })
       .catch(error => {
         console.error('Error fetching recommendations:', error);
@@ -56,14 +65,14 @@
 
   <!-- Nav -->
   <nav
-    class="absolute top-0 left-0 w-full z-50 bg-transparent text-center p-6 flex items-center justify-between px-[8%]">
+    class="absolute top-0 left-0 w-full z-50 bg-black/30 backdrop-blur-2 text-center p-6 flex items-center justify-between px-[8%]">
     <div>
       <h1 class="font-title text-3xl">REKOM</h1>
     </div>
-    <div class="flex justify-center flex-1 gap-10">
-      <a href="/" class="text-lg hover:text-[#FD5017]" style="text-shadow: 4px 4px 6px rgba(0,0,0,0.7);">Home</a>
-      <a href="/rekom" class="text-lg hover:text-[#FD5017]" style="text-shadow: 4px 4px 6px rgba(0,0,0,0.7);">Reko</a>
-      <a href="/about" class="text-lg hover:text-[#FD5017]" style="text-shadow: 4px 4px 6px rgba(0,0,0,0.7);">About
+    <div class="flex justify-center flex-1 gap-10 font-weight">
+      <a href="/" class="text-md hover:text-[#FD5017]" style="text-shadow: 4px 4px 6px rgba(0,0,0,0.7);">Home</a>
+      <a href="/rekom" class="text-md hover:text-[#FD5017]" style="text-shadow: 4px 4px 6px rgba(0,0,0,0.7);">Reko</a>
+      <a href="/about" class="text-md hover:text-[#FD5017]" style="text-shadow: 4px 4px 6px rgba(0,0,0,0.7);">About
         us</a>
     </div>
 
@@ -79,11 +88,11 @@
     style="background-image: url('/static/images/daredevil.jpg');">
 
     <div
-      class="bg-[#3C3B3B] bg-opacity-50 rounded-xl p-10 w-[90%] md:w-[80%] lg:w-[70%] flex flex-col md:flex-row gap-10">
+      class="bg-[#3C3B3B] bg-opacity-80 rounded-xl p-10 w-[90%] md:w-[80%] lg:w-[70%] flex flex-col md:flex-row gap-10">
 
       <!-- Left Panel -->
       <div class=" w-full md:w-1/2">
-        <h2 class="text-2xl md:text-3xl font-bold mb-6">
+        <h2 class="text-2xl md:text-3xl font-bold mb-6 text-center">
           FIND THE <span class="text-[#E341FF]">MOVIE</span> THAT YOU <span class="text-[#E341FF]">LIKE</span>
         </h2>
 
@@ -114,12 +123,12 @@
 
 
         <div class="mb-4">
-          <label class="block text-sm mb-1" for="user_id">USER ID</label>
+          <label class="block text-sm mb-1" for="user_id">USER ID (Optional)</label>
           <input type="text" id="user_id" class="w-full p-2 rounded-md bg-gray-200 text-black" />
         </div>
 
         <div class="mb-6">
-          <label class="block text-sm mb-1" for="title">MOVIE TITLE HERE</label>
+          <label class="block text-sm mb-1" for="title">MOVIE TITLE (Optional)</label>
           <input type="text" id="title" class="w-full p-2 rounded-md bg-gray-200 text-black" />
         </div>
 
@@ -133,7 +142,7 @@
       <div class="hidden md:block w-px bg-[#E341FF]"></div>
 
       <!-- Right Panel -->
-      <div class="w-full md:w-1/2 flex flex-col text-center max-h-[300px] bg-transparent">
+      <div class="w-full md:w-1/2 flex flex-col text-center bg-transparent flex-1">
         <!-- Fixed Title -->
         <div class="sticky top-0 bg-transparent z-10">
           <h2 class="text-2xl md:text-3xl font-bold mb-4">
@@ -142,7 +151,7 @@
         </div>
 
         <!-- Scrollable Results -->
-        <div id="results" class="mt-8 overflow-y-auto h-full space-y-4 pr-2 custom-scrollbar">
+        <div id="results" class="mt-8 overflow-y-auto h-full max-h-[30vh] space-y-4 pr-2 custom-scrollbar">
           <!-- Cards will be appended here by JavaScript -->
         </div>
       </div>
