@@ -5,75 +5,208 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rekom</title>
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../static/styles.css" />
 </head>
 
 <body class="bg-primary text-white">
   <!-- Nav -->
-  <nav class="text-center p-6 flex items-center justify-between z-3 px-[8%]">
+  <nav
+    class="absolute top-0 left-0 w-full z-50 bg-black/30 backdrop-blur-2 text-center p-6 flex items-center justify-between px-[8%]">
     <div>
-      <h1 class="font-title text-[2rem]">Rekom</h1>
+      <h1 class="font-title text-3xl">REKOM</h1>
     </div>
-    <div class="flex justify-center flex-1 gap-10 font-body c1">
-      <a href="/" class="transition hover:text-[#FD5017]">Home</a>
-      <a href="/rekom" class="transition hover:text-[#FD5017]">Reko</a>
-      <a href="/about" class="transition hover:text-[#FD5017]">About Us</a>
+    <div class="flex justify-center flex-1 gap-10 font-['Poppins']">
+      <a href="/" class="text-sm hover:text-[#FD5017]" style="text-shadow: 4px 4px 6px rgba(0,0,0,0.7);">Home</a>
+      <a href="/rekom" class="text-sm hover:text-[#FD5017]" style="text-shadow: 4px 4px 6px rgba(0,0,0,0.7);">Reko</a>
+      <a href="/about" class="text-sm hover:text-[#FD5017]" style="text-shadow: 4px 4px 6px rgba(0,0,0,0.7);">About
+        us</a>
     </div>
     <div>
-      <a href="/contact" class="transition flex"> <img src="../static/images/headset.svg" alt="headset"
-          class="w-8 h-8 invert transition hover:text-[#4EC3B9]" />
+      <a href="/contact" class="flex">
+        <img src="../static/images/headset.svg" alt="headset" class="w-6 h-6 invert" />
       </a>
     </div>
   </nav>
-  <div id="overlay">
-    <div id="carousel">
-      <div class="card" data-index="0">Devil May Cry</div>
-      <div class="card" data-index="1">Daredevil</div>
+
+  <!-- Hero Section with dynamic background -->
+  <section id="hero"
+    class="flex flex-col lg:flex-row items-center justify-between px-[8%] py-20 bg-cover bg-center relative min-h-screen transition-colors duration-500 ease-in-out">
+    <div id="bg-layer" class="absolute inset-0 bg-cover bg-center transition-opacity duration-500 ease-in-out z-0">
     </div>
 
-    <div id="movie-details">
-      <h1 id="movie-title"></h1>
-      <p id="movie-description"></p>
-      <ul>
-        <li id="movie-genre"></li>
-        <li id="movie-episodes"></li>
-        <li id="movie-studio"></li>
-        <li id="movie-director"></li>
-        <li id="movie-voices"></li>
+    <!-- Text Content -->
+    <div class="max-w-lg z-10">
+      <h1 id="hero-title"
+        class="text-7xl font-title font-bold leading-tight mb-1 transition-opacity duration-500 ease-in-out whitespace-nowrap">
+        DEVIL
+        MAY
+        CRY</h1>
+      <p id="hero-desc" class="font-light text-sm mb-6 transition-opacity duration-500 ease-in-out">
+        Legendary demon slayer Dante runs a devil-hunting business, taking on deadly jobs while battling enemies from
+        his past. Based on the hit video game series, Devil May Cry delivers stylish action, gothic themes, and
+        supernatural
+        battles.
+      </p>
+      <ul class="text-sm leading-relaxed transition-opacity duration-500 ease-in-out">
+        <li id="genre"><strong>Genre:</strong>Action, Supernatural, Dark Fantasy</p>
+        </li>
+        <li id="episodes"><strong>Episodes:</strong> 12 Episodes</li>
+        <li id="studio"><strong>Studio:</strong> Madhouse</li>
+        <li id="director"><strong>Directed by:</strong> Shin Itagaki</li>
+        <li id="voices"><strong>Voices:</strong> Toshiyuki Morikawa, Atsuko Tanaka, Fumiko Orikasa</li>
       </ul>
+
+      <button> <a href="/rekom"
+          class="mt-8 px-6 py-3 bg-white text-black font-bold rounded-full hover:bg-[#FD5017] hover:text-white transition inline-block text-center">
+          GET RECOMMENDATIONS
+        </a>
+
+      </button>
+    </div>
+  </section>
+
+  <!-- Carousel -->
+  <div class="flex justify-center gap-10 px-[8%] -mt-32 z-20 relative">
+    <div class="cursor-pointer" onclick="changeBg(0)" id="thumb-0">
+      <img src="../static/images/daredevilp.jpg" class="w-32 h-20 object-cover rounded-xl" alt="Thumb 1">
+    </div>
+    <div class="cursor-pointer" onclick="changeBg(1)" id="thumb-1">
+      <img src="../static/images/wednesday.jpg" class="w-32 h-20 object-cover rounded-xl" alt="Thumb 2">
+    </div>
+    <div class="cursor-pointer" onclick="changeBg(2)" id="thumb-2">
+      <img src="../static/images/minecraft.jpg" class="w-32 h-20 object-cover rounded-xl" alt="Thumb 3">
+    </div>
+    <div class="cursor-pointer" onclick="changeBg(3)" id="thumb-3">
+      <img src="../static/images/devilmaycry.jpg" class="w-32 h-20 object-cover rounded-xl" alt="Thumb 4">
+    </div>
+    <div class="cursor-pointer" onclick="changeBg(4)" id="thumb-4">
+      <img src="../static/images/ballerina.jpg" class="w-32 h-20 object-cover rounded-xl" alt="Thumb 5">
     </div>
   </div>
 
-  <script src="carousel.js"></script>
+
+  <script>
+    const bgColors = [
+      "#1B0003",       // Daredevil
+      "#000022",       // Wednesday
+      "#0D1500",       // Minecraft
+      "#160B0B",       // Devil May Cry
+      "#21011B"        // Ballerina
+    ];
+
+
+    const backgrounds = [
+      "url('../static/images/daredevilbg.svg')",
+      "url('../static/images/wednesdaybg.svg')",
+      "url('../static/images/minescraftbg.svg')",
+      "url('../static/images/devilmaycryBg.svg')",
+      "url('../static/images/ballerinaBg.svg')",
+    ];
+
+    const content = [
+      {
+        title: "DAREDEVIL",
+        description: "Blinded but not broken, Matt Murdock returns to the streets of Hell’s Kitchen as Daredevil—only to find his city engulfed in a rising darkness. Crime lords, corrupt officials, and a terrifying new syndicate have seized control, forcing Matt to question whether justice can ever be won through the law alone.",
+        genre: "Action, Crime, Superhero",
+        episodes: "39 Episodes",
+        studio: "Marvel Television",
+        director: "Steven S. DeKnight",
+        voices: "Charlie Cox, Vincent D'Onofrio, Deborah Ann Woll"
+      },
+      {
+        title: "WEDNESDAY",
+        description: "Follows Wednesday Addams' years as a student, when she attempts to master her emerging psychic ability, thwart a killing spree, and solve the mystery that embroiled her parents.",
+        genre: "Mystery, Comedy, Supernatural",
+        episodes: "8 Episodes",
+        studio: "Netflix",
+        director: "Tim Burton",
+        voices: "Jenna Ortega, Catherine Zeta-Jones, Luis Guzmán"
+      },
+      {
+        title: "A MINECRAFT MOVIE",
+        description: "Four misfits are suddenly pulled through a mysterious portal into a bizarre cubic wonderland that thrives on imagination. To get back home they'll have to master this world while embarking on a quest with an unexpected expert crafter.",
+        genre: "Adventure, Fantasy, Animation",
+        episodes: "TBD",
+        studio: "Mojang Studios",
+        director: "TBD",
+        voices: "Various YouTubers"
+      },
+      {
+        title: "DEVIL MAY CRY",
+        description: "Legendary demon slayer Dante runs a devil-hunting business, taking on deadly jobs while battling enemies from his past. Based on the hit video game series, Devil May Cry delivers stylish action, gothic themes, and supernatural battles.",
+        genre: "Action, Supernatural, Dark Fantasy",
+        episodes: "12 Episodes",
+        studio: "Madhouse",
+        director: "Shin Itagaki",
+        voices: "Toshiyuki Morikawa, Atsuko Tanaka, Fumiko Orikasa"
+      },
+      {
+        title: "BALLERINA",
+        description: "Taking place during the events of John Wick: Chapter 3 - Parabellum, Ballerina follows Eve Macarro who is beginning her training in the assassin traditions of the Ruska Roma to get revenge for her father’s death.",
+        genre: "Action, Thriller",
+        episodes: "Movie",
+        studio: "Lionsgate",
+        director: "Len Wiseman",
+        voices: "Ana de Armas, Keanu Reeves, Lance Reddick"
+      }
+    ];
+
+    function changeBg(index) {
+      const bgLayer = document.getElementById('bg-layer');
+
+      // Fade out
+      bgLayer.classList.add('opacity-0');
+
+      // Wait for the fade-out to complete
+      setTimeout(() => {
+        bgLayer.style.backgroundImage = backgrounds[index];
+        bgLayer.style.backgroundColor = bgColors[index];
+
+        // Fade in
+        bgLayer.classList.remove('opacity-0');
+      }, 200); //
+      const heroSection = document.getElementById('hero');
+      heroSection.style.backgroundImage = backgrounds[index];
+      heroSection.style.backgroundColor = bgColors[index];
+
+      // Update content
+      document.getElementById('hero-title').textContent = content[index].title;
+      document.getElementById('hero-desc').textContent = content[index].description;
+      document.getElementById('genre').innerHTML = `<strong>Genre:</strong> ${content[index].genre}`;
+      document.getElementById('episodes').innerHTML = `<strong>Episodes:</strong> ${content[index].episodes}`;
+      document.getElementById('studio').innerHTML = `<strong>Studio:</strong> ${content[index].studio}`;
+      document.getElementById('director').innerHTML = `<strong>Directed by:</strong> ${content[index].director}`;
+      document.getElementById('voices').innerHTML = `<strong>Voices:</strong> ${content[index].voices}`;
+
+      // Highlight active thumbnail
+      for (let i = 0; i < backgrounds.length; i++) {
+        const thumb = document.getElementById(`thumb-${i}`);
+        thumb.classList.remove('scale-125', 'opacity-100');
+        thumb.classList.add('opacity-50'); // Dim inactive thumbs
+      }
+      const activeThumb = document.getElementById(`thumb-${index}`);
+      activeThumb.classList.remove('opacity-50');
+      activeThumb.classList.add('scale-125', 'opacity-100'); // Highlight active thumb
+    }
+
+    // Initialize default content
+    changeBg(0);
+    // Set initial content
+    let currentIndex = 0;
+    changeBg(currentIndex);
+
+    // Auto-rotate every 3 seconds
+    function autoRotateCarousel() {
+      currentIndex = (currentIndex + 1) % backgrounds.length;
+      changeBg(currentIndex);
+    }
+
+    setInterval(autoRotateCarousel, 5000);
+  </script>
+
 </body>
+{% include 'footer.html' %}
 
-<footer class="w-full h-[484px] bg-[#F3F4E6] shadow-[0_10px_20px_0_rgba(0,0,0,0.2)] mt-[15rem] relative">
-  <!-- Logo -->
-  <img src="../static/public/sentisize_logo 2 BLUE FOR FOOTER.png" alt="Logo"
-    class="absolute ml-[16rem] mt-[5rem] w-[125px]">
-
-  <!-- Text and Copyright Section -->
-  <div class="absolute ml-[25rem] top-[30%] transform -translate-x-1/2 text-[#284D6F] font-body">
-    <p class="text-lg mt-[4rem]">West Visayas State University, Lapaz</p>
-    <p class="text-lg mt-[6rem]">Privacy Policy</p>
-    <p class="text-lg mt-5">Copyright 2025</p>
-  </div>
-
-  <!-- Vertical Line on the Right Side -->
-  <div class="absolute right-0 top-0 h-[260px] w-[4px] bg-gradient-to-b from-[#F9CD3E] to-[#5D921D]"></div>
-
-  <!-- Container to center image and links -->
-  <div class="absolute right-0 left-0 top-[90px] flex ml-[50rem] gap-8">
-    <!-- Image (line2.png) -->
-    <img src="../static/public/Line 2.png" alt="Line Image" class="w-[3px]">
-
-    <!-- Vertical Links Section -->
-    <div class="flex flex-col gap-4 text-[#284D6F] font-body text-lg">
-      <a href="#" class="hover:text-[#4EC3B9]">Home</a>
-      <a href="/" class="hover:text-[#4EC3B9]">Sentiment</a>
-      <a href="" class="hover:text-[#4EC3B9]">About Us</a>
-      <a href="/contact" class="hover:text-[#4EC3B9]">Contact Us</a>
-    </div>
-  </div>
-</footer>
+</html>
