@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rekom</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/static/styles.css" />
 </head>
 <script>
@@ -41,11 +42,11 @@
 
           const movieCard = `
           <div class="bg-transparent text-white rounded-md p-4 mb-4 shadow">
-            <h3 class="font-bold text-lg mb-1">${movie.Title}</h3>
+            <h3 class="text-lg mb-1">${movie.Title}</h3>
             <img src="${movie.poster}" alt="${movie.Title}" class="w-32 mb-2 rounded block mx-auto">
-            <p><strong>Genres:</strong> ${movie.Genres}</p>
-            <p><strong>Year:</strong> ${movie.Year}</p>
-            <p><strong>Rating:</strong> ${movie.Rating}</p>
+            <p>Genres: ${movie.Genres}</p>
+            <p>Year:${movie.Year}</p>
+            <p>Rating:${movie.Rating}</p>
           </div>
         `;
 
@@ -61,7 +62,7 @@
   }
 </script>
 
-<body class="bg-black text-white font-sans">
+<body class="bg-black text-white">
 
   <!-- Nav -->
   <nav
@@ -69,22 +70,22 @@
     <div>
       <h1 class="font-title text-3xl">REKOM</h1>
     </div>
-    <div class="flex justify-center flex-1 gap-10 font-weight">
-      <a href="/" class="text-md hover:text-[#FD5017]" style="text-shadow: 4px 4px 6px rgba(0,0,0,0.7);">Home</a>
-      <a href="/rekom" class="text-md hover:text-[#FD5017]" style="text-shadow: 4px 4px 6px rgba(0,0,0,0.7);">Reko</a>
-      <a href="/about" class="text-md hover:text-[#FD5017]" style="text-shadow: 4px 4px 6px rgba(0,0,0,0.7);">About
+    <div class="flex justify-center flex-1 gap-10 font-['Poppins']">
+      <a href="/" class="text-sm hover:text-[#FD5017]" style="text-shadow: 4px 4px 6px rgba(0,0,0,0.7);">Home</a>
+      <a href="/rekom" class="text-sm hover:text-[#FD5017]" style="text-shadow: 4px 4px 6px rgba(0,0,0,0.7);">Reko</a>
+      <a href="/about" class="text-sm hover:text-[#FD5017]" style="text-shadow: 4px 4px 6px rgba(0,0,0,0.7);">About
         us</a>
     </div>
 
     <div>
       <a href="/contact" class="flex">
-        <img src="../static/images/headset.svg" alt="headset" class="w-6 h-6 invert hover:text-[#FD5017]" />
+        <img src="../static/images/headset.svg" alt="headset" class="w-6 h-6 invert" />
       </a>
     </div>
   </nav>
 
   <!-- Main Section -->
-  <section class="font-title flex items-center justify-center min-h-screen w-full bg-cover bg-center relative"
+  <section class="flex items-center justify-center min-h-screen w-full bg-cover bg-center relative"
     style="background-image: url('/static/images/daredevil.jpg');">
 
     <div
@@ -92,13 +93,13 @@
 
       <!-- Left Panel -->
       <div class=" w-full md:w-1/2">
-        <h2 class="text-2xl md:text-3xl font-bold mb-6 text-center">
+        <h2 class="font-title text-2xl md:text-3xl font-bold mb -6 text-center">
           FIND THE <span class="text-[#E341FF]">MOVIE</span> THAT YOU <span class="text-[#E341FF]">LIKE</span>
         </h2>
 
         <div class="mb-4">
-          <label class="block text-sm mb-1" for="genre">GENRE</label>
-          <select id="genre" class="w-full p-2 rounded-md bg-gray-200 text-black">
+          <label class="font-title block text-sm mb-1" for="genre">GENRE</label>
+          <select id="genre" class="font-['Poppins'] w-full p-2 rounded-md bg-gray-200 text-black">
             <option value="Action">Action</option>
             <option value="Adventure">Adventure</option>
             <option value="Animation">Animation</option>
@@ -123,17 +124,17 @@
 
 
         <div class="mb-4">
-          <label class="block text-sm mb-1" for="user_id">USER ID (Optional)</label>
+          <label class="font-title block text-sm mb-1" for="user_id">USER ID (Optional)</label>
           <input type="text" id="user_id" class="w-full p-2 rounded-md bg-gray-200 text-black" />
         </div>
 
         <div class="mb-6">
-          <label class="block text-sm mb-1" for="title">MOVIE TITLE (Optional)</label>
+          <label class="font-title block text-sm mb-1" for="title">MOVIE TITLE (Optional)</label>
           <input type="text" id="title" class="w-full p-2 rounded-md bg-gray-200 text-black" />
         </div>
 
         <button onclick="getRecommendations()"
-          class="w-full bg-[#E341FF] hover:bg-[#c530e4] text-white font-bold py-3 rounded-md text-2xl pb-2">
+          class="font-title w-full bg-[#E341FF] hover:bg-[#c530e4] text-white font-bold py-3 rounded-md text-2xl pb-2">
           REKOM
         </button>
       </div>
@@ -145,13 +146,13 @@
       <div class="w-full md:w-1/2 flex flex-col text-center bg-transparent flex-1">
         <!-- Fixed Title -->
         <div class="sticky top-0 bg-transparent z-10">
-          <h2 class="text-2xl md:text-3xl font-bold mb-4">
+          <h2 class="text-2xl font-title md:text-3xl font-bold mb-4">
             OUR MOVIE <span class="text-[#E341FF]">RECOMMENDATIONS</span>
           </h2>
         </div>
 
         <!-- Scrollable Results -->
-        <div id="results" class="mt-8 overflow-y-auto h-full max-h-[30vh] space-y-4 pr-2 custom-scrollbar">
+        <div id="results" class="mt-2 overflow-y-auto h-full max-h-[30vh] space-y-4 pr-2 custom-scrollbar">
           <!-- Cards will be appended here by JavaScript -->
         </div>
       </div>
@@ -159,7 +160,6 @@
     </div>
   </section>
 
-  <script src="/static/app.js"></script>
   {% include 'footer.html' %}
 </body>
 
