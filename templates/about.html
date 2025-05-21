@@ -1,12 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rekom</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="../static/css/styles.css" />
+    <title>About Us - Rekom</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles.css" />
+    <style>
+        body {
+            background-color: #161616;
+        }
+
+        .developer-info-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 5rem;
+            padding-top: 10rem;
+        }
+
+        .developer-info-container:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+
+        .text-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .profile-image-container {
+            width: 25rem;
+            height: 25rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .profile-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+        }
+
+        .social-links a {
+            padding-inline: 3rem;
+        }
+
+        .image-outline {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 2px solid #E341FF;
+            pointer-events: none;
+        }
+
+    </style>
 </head>
-<body> <h1>hello about</h1>
+
+<body class="text-white font-['Poppins']">
+
+    <nav class="absolute top-0 left-0 w-full z-50 backdrop-blur-2 text-center p-6 flex items-center justify-between px-[8%]">
+        <div>
+            <h1 class="font-title text-3xl">REKOM</h1>
+        </div>
+        <div class="flex justify-center flex-1 gap-10">
+            <a href="/" class="text-sm hover:text-[#FD5017]" style="text-shadow: 4px 4px 6px rgba(0,0,0,0.7);">Home</a>
+            <a href="/rekom" class="text-sm hover:text-[#FD5017]" style="text-shadow: 4px 4px 6px rgba(0,0,0,0.7);">Reko</a>
+            <a href="/about" class="text-sm hover:text-[#FD5017]" style="text-shadow: 4px 4px 6px rgba(0,0,0,0.7);">About us</a>
+        </div>
+        <div>
+            <a href="/contact" class="flex">
+                <img src="../static/images/headset.svg" alt="headset" class="w-6 h-6 invert" />
+            </a>
+        </div>
+    </nav>
+
+    <section class="pt-40 px-[5%] pb-40">
+        <div class="text-center mb-12 pt-10">
+            <h2 class="font-title text-8xl font-bold mb-4 pt-20">ABOUT US</h2>
+            <p class="pt-10 font-title text-4xl pb-5">MEET YOUR DEVELOPERS</p>
+        </div>
+
+        <div class="developer-info-container">
+            <div class="text-info">
+                <h3 class="font-title text-6xl font-semibold mb-1">MAURICIO MANUEL BERGANCIA</h3>
+                <p class="font-title text-gray-300 text-4xl mb-2 pt-2">LEAD BACKEND, FRONTEND</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/mauricio-manuel-bergancia-47202a318/" target="_blank"><img src="/static/images/linkedin.svg" alt="LinkedIn" class="w-15 h-15"></a>
+                    <a href="https://www.instagram.com/murisyooow/" target="_blank"><img src="/static/images/instagram.svg" alt="Instagram" class="w-15 h-15"></a>
+                    <a href="https://github.com/Mauricio1408" target="_blank"><img src="/static/images/github.svg" alt="GitHub" class="w-15 h-15"></a>
+                </div>
+            </div>
+            <div class="profile-image-container relative">
+                <img src="/static/images/mauricio.svg" alt="MAURICIO MANUEL BERGANCIA">
+            </div>
+        </div>
+
+        <div class="developer-info-container">
+            <div class="text-info">
+                <h3 class="font-title text-6xl font-semibold mb-1">MHERLIE JOY CHAVEZ</h3>
+                <p class="font-title text-gray-300 text-4xl mb-2 pt-2">DATA ANALYST, CODE REVIEWER</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/mherlie-joy-chavez-42bb66326/" target="_blank"><img src="/static/images/linkedin.svg" alt="LinkedIn" class="w-15 h-15"></a>
+                    <a href="https://www.instagram.com/mherliejoychavez" target="_blank"><img src="/static/images/instagram.svg" alt="Instagram" class="w-15 h-15"></a>
+                    <a href="https://github.com/mherlie" target="_blank"><img src="/static/images/github.svg" alt="GitHub" class="w-15 h-15"></a>
+                </div>
+            </div>
+            <div class="profile-image-container relative">
+                <img src="/static/images/mherlie.svg" alt="MHERLIE JOY CHAVEZ">
+            </div>
+        </div>
+
+        <div class="developer-info-container">
+            <div class="text-info">
+                <h3 class="font-title text-6xl font-semibold mb-1">MARK ANDREI ENCANTO</h3>
+                <p class="font-title text-gray-300 text-4xl mb-2 pt-2">UI/UX, FRONTEND, BACKEND</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/mark-andrei-encanto-962179351" target="_blank"><img src="/static/images/linkedin.svg" alt="LinkedIn" class="w-15 h-15"></a>
+                    <a href="https://www.instagram.com/markndrei/" target="_blank"><img src="/static/images/instagram.svg" alt="Instagram" class="w-15 h-15"></a>
+                    <a href="https://github.com/Markndrei" target="_blank"><img src="/static/images/github.svg" alt="GitHub" class="w-15 h-15"></a>
+                </div>
+            </div>
+            <div class="profile-image-container relative">
+                <img src="/static/images/mark.svg" alt="MARK ANDREI ENCANTO">
+            </div>
+        </div>
+
+        <div class="developer-info-container">
+            <div class="text-info">
+                <h3 class="font-title text-6xl font-semibold mb-1">CHARIZ DIANNE FALCO</h3>
+                <p class="font-title text-gray-300 text-4xl mb-2 pt-2">LEAD DOCUMENTOR, FRONTEND</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/chariz-dianne-falco-12350626a/" target="_blank"><img src="/static/images/linkedin.svg" alt="LinkedIn" class="w-15 h-15"></a>
+                    <a href="https://www.instagram.com/cha.dianne" target="_blank"><img src="/static/images/instagram.svg" alt="Instagram" class="w-15 h-15"></a>
+                    <a href="https://github.com/chariz1101" target="_blank"><img src="/static/images/github.svg" alt="GitHub" class="w-15 h-15"></a>
+                </div>
+            </div>
+            <div class="profile-image-container relative">
+                <img src="/static/images/chariz.svg" alt="CHARIZ DIANNE FALCO">
+            </div>
+        </div>
+
+        <div class="developer-info-container">
+            <div class="text-info">
+                <h3 class="font-title text-6xl font-semibold mb-1">RHAZEL JAY GUMACAL</h3>
+                <p class="font-title text-gray-300 text-4xl mb-2 pt-2">BACKEND, FRONTEND</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/rhazeljay/" target="_blank"><img src="/static/images/instagram.svg" alt="Instagram" class="w-15 h-15"></a>
+                    <a href="https://github.com/Wracell" target="_blank"><img src="/static/images/github.svg" alt="GitHub" class="w-15 h-15"></a>
+                </div>
+            </div>
+            <div class="profile-image-container relative">
+                <img src="/static/images/rhazel.svg" alt="RHAZEL JAY GUMACAL">
+            </div>
+        </div>
+
+    </section>
+
+  {% include 'footer.html' %}
 </body>
+
 </html>
